@@ -1,6 +1,6 @@
-"# verilog_practice" 
-this is for environment setup
+"verilog_practice" 
+environment setup:
 1.visual studio code
-2.makefile (mingw)
-3.iverilog
-4.GTKwave
+2.makefile (install from mingw)
+3.iverilog (install from iverilog)
+4.GTKwave  (install from iverilog)
