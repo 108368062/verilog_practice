@@ -1,3 +1,7 @@
+#status
+git stutus
+#difference
+git diff
 #---clone code from github---
 git clone https://github.com/108368062/verilog_practice.git
 #---update to github---
