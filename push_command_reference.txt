@@ -1,10 +1,15 @@
-#status
+#-------status----------------------
 git stutus
-#difference
+#-------difference------------------
 git diff
-#---clone code from github---
+#-----clone code from github---
 git clone https://github.com/108368062/verilog_practice.git
-#---update to github---
+#-----update to github------------
 git add .
 git commit -m "add git push command"
 git push -u origin main
+#-----remove github file---------
+git rm xxx.xxx(file name)
+git commit -m "remove no use file"
+git push -u origin main
+#------------------------------------
