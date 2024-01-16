@@ -1,0 +1,3 @@
+question:
+1. use gate level
+2. use half adder to build full adder
