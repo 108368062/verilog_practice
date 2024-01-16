@@ -1,0 +1,9 @@
+question and hint:
+1. use gate level
+2. use half adder to build full adder
+3. use full adder to build rca4
+4. use rca4 adder to build rca16
+
+note:
+rca4   =  4-bit ripple carry adder
+rca16 =  16-bit ripple carry adder
