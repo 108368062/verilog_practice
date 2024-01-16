@@ -5,15 +5,15 @@ alu lab3a spec & question:
 3.當accum輸入為0時，zero訊號輸出為1;而當accum輸入不為0時，zero訊號輸出為0，並且reset訊號不需聽從reset訊號的動作，也不須與clock同步
 4.使用以下3-bits opcode來定義其操作模式，當opcode輸入為其他任意值(包含unknown狀態等)時，alu_out輸出為0
 
-opcode : alu operation
-000      : pass accum
-001      : accum + data (add)
-010      : accum - data (subtraction)
-011      : accum AND data (bit-wise AND)
-100      : accum XOR data (bit-wise XOR)
-101      : accum 取二補數
-110      : accum*5 + accum/8
-111      : 假如accum >=  32，則alu_out 等於 data，否則alu_out為data取一補數
+opcode | alu operation
+000       | pass accum
+001       | accum + data (add)
+010       | accum - data (subtraction)
+011       | accum AND data (bit-wise AND)
+100       | accum XOR data (bit-wise XOR)
+101       | accum 取二補數
+110       | accum*5 + accum/8
+111       | 假如accum >=  32，則alu_out 等於 data，否則alu_out為data取一補數
 
 5.本題所有訊號及運算均視為無號數運算即可，且不需考慮溢位問題
 6.alu_test.v會自動比對結果
