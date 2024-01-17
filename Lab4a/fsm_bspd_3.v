@@ -17,9 +17,9 @@ begin
     if(reset)
         c_t <= s0;
     else
-	begin
-		c_t <= n_t;
-	end   
+    begin
+    	c_t <= n_t;
+    end   
 end
 
 //NS and OL

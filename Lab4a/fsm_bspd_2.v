@@ -17,7 +17,7 @@ begin
     if(reset)
         c_t <= s0;
     else
-	begin
+    begin
 		case(c_t)
 		s0: c_t = bit_in? s0 : s1;
 		s1: c_t = bit_in? s0 : s2;
@@ -26,7 +26,7 @@ begin
 		default:
 			n_t = s0;
 		endcase
-	end   
+    end   
 end
 
 //OL
