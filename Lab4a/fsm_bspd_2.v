@@ -18,14 +18,14 @@ begin
         c_t <= s0;
     else
     begin
-		case(c_t)
-		s0: c_t = bit_in? s0 : s1;
-		s1: c_t = bit_in? s0 : s2;
-		s2: c_t = bit_in? s3 : s2;
-		s3: c_t = bit_in? s0 : s1;
-		default:
-			n_t = s0;
-		endcase
+        case(c_t)
+        s0: c_t = bit_in? s0 : s1;
+        s1: c_t = bit_in? s0 : s2;
+        s2: c_t = bit_in? s3 : s2;
+        s3: c_t = bit_in? s0 : s1;
+        default:
+            n_t = s0;
+        endcase
     end   
 end
 
