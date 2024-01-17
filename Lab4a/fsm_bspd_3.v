@@ -18,7 +18,7 @@ begin
         c_t <= s0;
     else
 	begin
-		
+		c_t <= n_t;
 	end   
 end
 
@@ -26,10 +26,10 @@ end
  always@(*)
 begin
     case(c_t)
-    s0: det_out = bit_in? 1'b0 : 1'b0;
-    s1: det_out = bit_in? 1'b0 : 1'b0;
-    s2: det_out = bit_in? 1'b0 : 1'b0;
-    s3: det_out = bit_in? 1'b0 : 1'b1;
+    s0: begin n_t = bit_in? s0 : s1; det_out = bit_in? 1'b0 : 1'b0; end
+    s1: begin n_t = bit_in? s0 : s2; det_out = bit_in? 1'b0 : 1'b0; end
+    s2: begin n_t = bit_in? s3 : s2; det_out = bit_in? 1'b0 : 1'b0; end
+    s3: begin n_t = bit_in? s0 : s1; det_out = bit_in? 1'b0 : 1'b1; end
     default:
         det_out = 0;
     endcase
