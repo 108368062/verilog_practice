@@ -119,8 +119,10 @@ end
 
 
         initial begin
-                $fsdbDumpfile("SDAM.fsdb");
-                $fsdbDumpvars("+all");
+                //$fsdbDumpfile("SDAM.fsdb");
+                //$fsdbDumpvars("+all");
+                $dumpfile("SDAM_wave.vcd");
+                $dumpvars;
         end
 
 
