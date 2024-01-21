@@ -42,8 +42,8 @@ begin
 	case(c_t)
 	IDLE   : n_t = (sda)? IDLE:STR;
 	STR    : n_t = (sda)? WR_ADDR:RD;//1:write, 0:read(not use state)
-	WR_ADDR: n_t = (addr_cnt == 4'd7)? WR_DAT:WR_ADDR; 
-	WR_DAT : n_t = (data_cnt == 5'd15)? OUT:WR_DAT; 
+	WR_ADDR: n_t = (addr_cnt == 4'd7)? WR_DAT:WR_ADDR; //get 8bit address from sda
+	WR_DAT : n_t = (data_cnt == 5'd15)? OUT:WR_DAT; //get 16bit data from sda
 	OUT    : n_t = IDLE;
 	default:
 		n_t = IDLE;
