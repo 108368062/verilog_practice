@@ -29,7 +29,7 @@ reg [4:0]  data_cnt;//data counter
 reg [2:0]  c_t, n_t;
 reg [7:0]  address;
 reg [15:0] data;
-
+//CS
 always@(posedge scl)
 begin
 	if(~reset_n)
@@ -37,7 +37,7 @@ begin
 	else
 		c_t <= n_t;
 end
-
+//NS
 always@(*)
 begin
 	case(c_t)
@@ -50,7 +50,7 @@ begin
 		n_t = IDLE;
 	endcase
 end
-
+//OL-1
 always@(*)
 begin
 	case(c_t)
@@ -59,8 +59,6 @@ begin
 		dvalid = 1'b0;
 		aout = 8'h0;
 		dout = 16'h00;
-		addr_cnt = 4'd0;
-		data_cnt = 4'd0;
 		address = 8'd0;
 		data = 16'd0;
 	end
@@ -69,8 +67,6 @@ begin
 		dvalid = 1'b0;
 		aout = 8'h0;
 		dout = 16'h00;
-		addr_cnt = 4'd0;
-		data_cnt = 5'd0;
 		address = 8'd0;
 		data = 16'd0;
 	end
@@ -79,8 +75,6 @@ begin
 		dvalid = 1'b0;
 		aout = 8'h0;
 		dout = 16'h00;
-		addr_cnt = addr_cnt +4'd1;
-		data_cnt = 5'd0;
 		case(addr_cnt)
 		4'd1:address[0] = sda;
 		4'd2:address[1] = sda;
@@ -99,8 +93,6 @@ begin
 		dvalid = 1'b0;
 		aout = 8'h0;
 		dout = 16'h00;
-		addr_cnt = 4'd0;
-		data_cnt = data_cnt+ 5'd1;
 		case(data_cnt)
 		4'd1:data[0] = sda;
 		4'd2:data[1] = sda;
@@ -127,8 +119,6 @@ begin
 		dvalid = 1'b1;
 		aout = address;
 		dout = data;
-		addr_cnt = 4'd0;
-		data_cnt = 5'd0;
 	end
 	default:
 	begin
@@ -136,11 +126,27 @@ begin
 		dvalid = 1'b0;
 		aout = 8'h0;
 		dout = 16'h00;
-		addr_cnt = 4'd0;
-		data_cnt = 4'd0;
 	end
 	endcase
 end		
-
+//OL-2 (for counter)
+always@(posedge scl)
+begin
+	case(c_t)
+	WR_ADDR: begin
+		addr_cnt <= addr_cnt +4'd1;
+		data_cnt <= 5'd0;
+	end
+	WR_DAT: begin
+		addr_cnt <= 4'd0;
+		data_cnt <= data_cnt+ 5'd1;
+	end
+	default:
+	begin
+		addr_cnt <= 4'd0;
+		data_cnt <= 5'd0;
+	end
+	endcase
+end
 
 endmodule
