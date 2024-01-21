@@ -49,7 +49,7 @@ begin
 		n_t = IDLE;
 	endcase
 end
-//OL-1
+//OL
 always@(*)
 begin
 	case(c_t)
@@ -128,7 +128,7 @@ begin
 	end
 	endcase
 end		
-//OL-2 (for counter)
+//(for counter)
 always@(posedge scl)
 begin
 	case(c_t)
