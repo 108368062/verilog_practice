@@ -17,6 +17,6 @@ begin
     mem[addr] = data;
 end 
 
-assign data = (read)? mem[addr] : 1'bz;
+assign data = (read)? mem[addr] : 8'hzz;
 
 endmodule
