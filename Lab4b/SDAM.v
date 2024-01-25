@@ -65,7 +65,7 @@ begin
 		avalid = 1'b0;
 		dvalid = 1'b0;
 		aout = 8'h0;
-		dout = 16'h00;
+		dout = 16'd0;
 		address = 8'd0;
 		data = 16'd0;
 	end
@@ -73,7 +73,7 @@ begin
 		avalid = 1'b0;
 		dvalid = 1'b0;
 		aout = 8'd0;
-		dout = 16'h00;
+		dout = 16'd0;
 		case(addr_cnt)
 		4'd0:address[0] = sda;
 		4'd1:address[1] = sda;
@@ -90,8 +90,8 @@ begin
 	WR_DAT: begin
 		avalid = 1'b0;
 		dvalid = 1'b0;
-		aout = 8'h0;
-		dout = 16'h00;
+		aout = 8'd0;
+		dout = 16'd0;
 		case(data_cnt)
 		4'd0:data[0] = sda;
 		4'd1:data[1] = sda;
@@ -123,8 +123,8 @@ begin
 	begin
 		avalid = 1'b0;
 		dvalid = 1'b0;
-		aout = 8'h0;
-		dout = 16'h00;
+		aout = 8'd0;
+		dout = 16'd0;
 		address = 8'd0;
 		data = 16'd0;
 	end
