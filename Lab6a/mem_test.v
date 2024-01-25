@@ -33,12 +33,16 @@ module memtest;
 	 error_cnt = error_cnt + 1;
        end
   endtask
+   initial begin
+                $dumpfile("mem_wave.vcd");
+                $dumpvars;
+        end
 
   initial
     begin
-      $shm_open ("mem.shm");
-      $shm_probe (write,read,addr,data);
-      $timeformat(-9, 1, " ns", 9);  //display time in nanoseconds
+      //$shm_open ("mem.shm");
+      //$shm_probe (write,read,addr,data);
+      //$timeformat(-9, 1, " ns", 9);  //display time in nanoseconds
 
 // Initialize all variables
       data_reg = 8'h0;               //ASSIGN VALUE TO SHADOW REGISTER
