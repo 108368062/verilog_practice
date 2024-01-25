@@ -20,9 +20,16 @@ $(TARGET) : $(TEMP)
 clean:
 	del $(TEMP)
 	del $(TARGET)
+clean_2:
+	rm $(TEMP)
+	rm $(TARGET)	
 
 wave:
 	gtkwave $(TARGET)
 
 help:
-	@echo "make all, all_nowave, iver, $(TARGET), clean, wave"
+	@echo "make all, all_nowave, iver, $(TARGET), clean, clean_2(for ubuntu), wave"
+	@echo "make detect is on development please not use!
+detect:
+	@echo "$(OS)"
+	@echo "$(uname)"
