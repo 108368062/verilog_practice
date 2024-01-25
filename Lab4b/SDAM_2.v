@@ -56,8 +56,8 @@ begin
 	IDLE: begin
 		avalid = 1'b0;
 		dvalid = 1'b0;
-		aout = 8'h0;
-		dout = 16'h00;
+		aout = 8'd0;
+		dout = 16'd0;
 		address = 8'd0;
 		data = 16'd0;
 	end
@@ -72,15 +72,15 @@ begin
 	WR_ADDR: begin
 		avalid = 1'b0;
 		dvalid = 1'b0;
-		aout = 8'h0;
-		dout = 16'h00;
+		aout = 8'd0;
+		dout = 16'd0;
 		address[addr_cnt] = sda;
 	end
 	WR_DAT: begin
 		avalid = 1'b0;
 		dvalid = 1'b0;
-		aout = 8'h0;
-		dout = 16'h00;
+		aout = 8'd0;
+		dout = 16'd0;
 		data[data_cnt] = sda;
 	end
 	OUT: begin
@@ -93,8 +93,10 @@ begin
 	begin
 		avalid = 1'b0;
 		dvalid = 1'b0;
-		aout = 8'h0;
-		dout = 16'h00;
+		aout = 8'd0;
+		dout = 16'd0;
+		address = 8'd0;
+		data = 16'd0;
 	end
 	endcase
 end		
