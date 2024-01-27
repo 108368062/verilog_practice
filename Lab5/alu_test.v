@@ -29,7 +29,7 @@ integer pass_cnt;//pass cnt
 integer i;
 integer j;
 //-------golden answer------
-assign zero_golden = (alu_out === 8'd0) ? 1:0;
+assign zero_golden = (accum === 8'd0) ? 1:0;
 assign opcode_0_golden = accum;
 assign opcode_1_golden = accum + data;
 assign opcode_2_golden = accum - data;
@@ -267,7 +267,7 @@ begin
         $display("funcion pass, congratulations!");
     $display("Total error:%d", err_cnt);
     $display("Total pass:%d", pass_cnt);
-    $display("pass rate(percentage):%d", (pass_cnt/(pass_cnt+err_cnt))*100);
+    $display("pass rate(percentage):%d", (pass_cnt*100/(pass_cnt+err_cnt)));
     #200 $finish;
 end
 //dump waveform
