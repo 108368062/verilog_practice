@@ -12,4 +12,5 @@ git push -u origin main
 git rm xxx.xxx(file name)
 git commit -m "remove no use file"
 git push -u origin main
-#------------------------------------
+#---git github vesion to local----
+git pull
