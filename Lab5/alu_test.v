@@ -12,6 +12,7 @@ wire [7:0] alu_out;
 
 parameter total_run=3;//check all function times
 parameter func_run=10;//check one opcode how may times
+parameter zero_run=3;//check one opcode how may times
 
 //golden signal or test signal
 wire [7:0] opcode_0_golden;
@@ -28,6 +29,7 @@ integer err_cnt;//error cnt
 integer pass_cnt;//pass cnt
 integer i;
 integer j;
+integer ze;//zero check only
 //-------golden answer------
 assign zero_golden = (accum === 8'd0) ? 1:0;
 assign opcode_0_golden = accum;
@@ -256,6 +258,26 @@ begin
         end
         else pass_cnt = pass_cnt + 1;
         end
+    end
+    //----------zero check only--------------
+    
+    for (ze = 0; ze < 8*zero_run;ze = ze + 1)
+    begin
+    @(negedge clk)begin
+        opcode = ze;
+        accum = 0; data = $random%256;
+    end
+    @(posedge clk)begin
+    #1
+        if (zero_golden !== zero) begin
+            err_cnt = err_cnt + 1;
+            $display("zero check function!");
+            $display("err_cnt:%d",err_cnt);
+            $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
+            $display("expected output: zero=%d", zero_golden);
+        end
+        else pass_cnt = pass_cnt + 1;
+    end
     end
     //-----------------------------
     end
