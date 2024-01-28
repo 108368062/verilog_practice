@@ -12,7 +12,7 @@ wire [7:0] alu_out;
 
 parameter total_run=3;//check all function times
 parameter func_run=10;//check one opcode how may times
-parameter zero_run=3;//check one opcode how may times
+parameter zero_run=3;//check zero output how may times
 
 //golden signal or test signal
 wire [7:0] opcode_0_golden;
