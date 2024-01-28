@@ -164,42 +164,40 @@ begin
             else pass_cnt = pass_cnt + 1;        
             end
         end
-    //----------opcode 3'b110 check--------------
-    opcode = 3'b110;
-    for (i = 0; i < func_run;i = i + 1)
-    begin
-        @(negedge clk)begin 
-        accum = $random%256; data = $random%256;
+    //----------opcode 3'b110 check-------------- 
+        for (i = 0; i < func_run;i = i + 1) begin
+            @(negedge clk)begin 
+                opcode = 3'b110;
+                accum = $random%256; data = $random%256;
+            end
+            @(posedge clk)begin
+            #(cycle/4)
+            if (alu_out !== opcode_6_golden | zero_golden !== zero) begin
+                err_cnt = err_cnt + 1;
+                $display("err_cnt:%d",err_cnt);
+                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
+                $display("expected output: alu_out=%b, zero=%d", opcode_6_golden, zero_golden);
+            end
+            else pass_cnt = pass_cnt + 1;
+            end
         end
-        @(posedge clk)begin
-        #1
-        if (alu_out !== opcode_6_golden | zero_golden !== zero) begin
-            err_cnt = err_cnt + 1;
-            $display("err_cnt:%d",err_cnt);
-            $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-            $display("expected output: alu_out=%b, zero=%d", opcode_6_golden, zero_golden);
-        end
-        else pass_cnt = pass_cnt + 1;
-        end
-    end
     //----------opcode 3'b111 check--------------
-    opcode = 3'b111;
-    for (i = 0; i < func_run;i = i + 1)
-    begin
-        @(negedge clk)begin 
-        accum = $random%256; data = $random%256;
+        for (i = 0; i < func_run;i = i + 1) begin
+            @(negedge clk)begin
+                opcode = 3'b111;
+                accum = $random%256; data = $random%256;
+            end
+            @(posedge clk)begin
+            #(cycle/4)
+            if (alu_out !== opcode_7_golden | zero_golden !== zero) begin
+                err_cnt = err_cnt + 1;
+                $display("err_cnt:%d",err_cnt);
+                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
+                $display("expected output: alu_out=%b, zero=%d", opcode_7_golden, zero_golden);
+            end
+            else pass_cnt = pass_cnt + 1;
+            end
         end
-        @(posedge clk)begin
-        #1
-        if (alu_out !== opcode_7_golden | zero_golden !== zero) begin
-            err_cnt = err_cnt + 1;
-            $display("err_cnt:%d",err_cnt);
-            $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-            $display("expected output: alu_out=%b, zero=%d", opcode_7_golden, zero_golden);
-        end
-        else pass_cnt = pass_cnt + 1;
-        end
-    end
     //----------opcode 3'bxxx check--------------
     opcode = 3'bxxx;
     for (i = 0; i < func_run;i = i + 1)
