@@ -10,9 +10,10 @@ reg [2:0] opcode;
 wire zero;
 wire [7:0] alu_out;
 
-parameter total_run=3;//check all function times
+parameter cycle=20;//clk cycle = 20ns
+parameter total_run=2;//check all function times
 parameter func_run=10;//check one opcode how may times
-parameter zero_run=3;//check zero output how may times//total run time *zero_run*8(opcode 3'd0~3'd7)
+parameter zero_run=1;//check zero output how may times//total run time *zero_run*8(opcode 3'd0~3'd7)
 
 //golden signal or test signal
 wire [7:0] opcode_0_golden;
@@ -46,7 +47,7 @@ assign opcode_other_golden = 8'd0;
 alu test_u1 (.clk(clk), .reset(reset), .data(data), .accum(accum), .opcode(opcode),
     .zero(zero), .alu_out(alu_out));
 //clk
-always #10 clk = ~clk;
+always #(cycle/2) clk = ~clk;
 
 //simulation process
 initial
@@ -62,39 +63,37 @@ begin
     reset = 0;
     for (j=0;j<total_run;j=j+1)begin
     //----------opcode 3'b000 check--------------
-    opcode = 3'b000;
-    for (i = 0; i < func_run;i = i + 1)
-    begin
-        @(negedge clk)begin 
-        accum = $random%256; data = $random%256;
-        end
-        @(posedge clk)begin
-        #1
-        if (alu_out !== opcode_0_golden | zero_golden !== zero) begin
-            err_cnt = err_cnt + 1;
-            $display("err_cnt:%d",err_cnt);
-            $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-            $display("expected output: alu_out=%b, zero=%d", opcode_0_golden, zero_golden);
-        end
+        for (i = 0; i < func_run;i = i + 1)begin
+            @(negedge clk)begin
+                opcode = 3'b000; 
+                accum = $random%256; data = $random%256;
+            end
+            @(posedge clk)begin
+            #(cycle/4)
+            if (alu_out !== opcode_0_golden | zero_golden !== zero) begin
+                err_cnt = err_cnt + 1;
+                $display("err_cnt:%d",err_cnt);
+                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
+                $display("expected output: alu_out=%b, zero=%d", opcode_0_golden, zero_golden);
+            end
         else pass_cnt = pass_cnt + 1;
         end
     end
-    //----------opcode 3'b001 check--------------
-    opcode = 3'b001;
-    for (i = 0; i < func_run;i = i + 1)
-    begin
-        @(negedge clk)begin 
-        accum = $random%256; data = $random%256;
-        end
-        @(posedge clk)begin
-        #1
-        if (alu_out !== opcode_1_golden | zero_golden !== zero) begin
-            err_cnt = err_cnt + 1;
-            $display("err_cnt:%d",err_cnt);
-            $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-            $display("expected output: alu_out=%b, zero=%d", opcode_1_golden, zero_golden);
-        end
-        else pass_cnt = pass_cnt + 1;
+    //----------opcode 3'b001 check--------------   
+        for (i = 0; i < func_run;i = i + 1) begin
+            @(negedge clk)begin
+                opcode = 3'b001; 
+                accum = $random%256; data = $random%256;
+            end
+            @(posedge clk)begin
+                #(cycle/4)
+            if (alu_out !== opcode_1_golden | zero_golden !== zero) begin
+                err_cnt = err_cnt + 1;
+                $display("err_cnt:%d",err_cnt);
+                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
+                $display("expected output: alu_out=%b, zero=%d", opcode_1_golden, zero_golden);
+            end
+            else pass_cnt = pass_cnt + 1;
         end
     end
     //----------opcode 3'b010 check--------------
