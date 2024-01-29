@@ -71,10 +71,7 @@ begin
             @(posedge clk)begin
                 #(cycle/4)
                 if (alu_out !== opcode_0_golden | zero_golden !== zero) begin
-                    err_cnt = err_cnt + 1;
-                    $display("err_cnt:%d",err_cnt);
-                    $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-                    $display("expected output: alu_out=%b, zero=%d", opcode_0_golden, zero_golden);
+                    error;//call task 
                 end
                 else pass_cnt = pass_cnt + 1;
             end
@@ -88,10 +85,7 @@ begin
             @(posedge clk)begin
                 #(cycle/4)
                 if (alu_out !== opcode_1_golden | zero_golden !== zero) begin
-                    err_cnt = err_cnt + 1;
-                    $display("err_cnt:%d",err_cnt);
-                    $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-                    $display("expected output: alu_out=%b, zero=%d", opcode_1_golden, zero_golden);
+                    error;//call task 
                 end
                 else pass_cnt = pass_cnt + 1;
             end
@@ -105,10 +99,7 @@ begin
             @(posedge clk)begin
                 #(cycle/4)
                 if (alu_out !== opcode_2_golden | zero_golden !== zero) begin
-                    err_cnt = err_cnt + 1;
-                    $display("err_cnt:%d",err_cnt);
-                    $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-                    $display("expected output: alu_out=%b, zero=%d", opcode_2_golden, zero_golden);
+                    error;//call task 
                 end
                 else pass_cnt = pass_cnt + 1;
             end
@@ -122,10 +113,7 @@ begin
             @(posedge clk)begin
             #(cycle/4)
             if (alu_out !== opcode_3_golden | zero_golden !== zero) begin
-                err_cnt = err_cnt + 1;
-                $display("err_cnt:%d",err_cnt);
-                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-                $display("expected output: alu_out=%b, zero=%d", opcode_3_golden, zero_golden);
+                    error;//call task 
             end
             else pass_cnt = pass_cnt + 1;
             end
@@ -139,10 +127,7 @@ begin
             @(posedge clk)begin
                 #(cycle/4)
                 if (alu_out !== opcode_4_golden | zero_golden !== zero) begin
-                err_cnt = err_cnt + 1;
-                $display("err_cnt:%d",err_cnt);
-                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-                $display("expected output: alu_out=%b, zero=%d", opcode_4_golden, zero_golden);
+                    error;//call task 
             end
             else pass_cnt = pass_cnt + 1;
             end
@@ -156,10 +141,7 @@ begin
             @(posedge clk)begin
             #(cycle/4)
             if (alu_out !== opcode_5_golden | zero_golden !== zero) begin
-                err_cnt = err_cnt + 1;
-                $display("err_cnt:%d",err_cnt);
-                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-                $display("expected output: alu_out=%b, zero=%d", opcode_5_golden, zero_golden);
+                error;//call task 
             end
             else pass_cnt = pass_cnt + 1;        
             end
@@ -173,10 +155,7 @@ begin
             @(posedge clk)begin
             #(cycle/4)
             if (alu_out !== opcode_6_golden | zero_golden !== zero) begin
-                err_cnt = err_cnt + 1;
-                $display("err_cnt:%d",err_cnt);
-                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-                $display("expected output: alu_out=%b, zero=%d", opcode_6_golden, zero_golden);
+                error;//call task 
             end
             else pass_cnt = pass_cnt + 1;
             end
@@ -190,10 +169,7 @@ begin
             @(posedge clk)begin
             #(cycle/4)
             if (alu_out !== opcode_7_golden | zero_golden !== zero) begin
-                err_cnt = err_cnt + 1;
-                $display("err_cnt:%d",err_cnt);
-                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-                $display("expected output: alu_out=%b, zero=%d", opcode_7_golden, zero_golden);
+                error;//call task 
             end
             else pass_cnt = pass_cnt + 1;
             end
@@ -207,10 +183,7 @@ begin
             @(posedge clk)begin
             #(cycle/4)
             if (alu_out !== opcode_other_golden | zero_golden !== zero) begin
-                err_cnt = err_cnt + 1;
-                $display("err_cnt:%d",err_cnt);
-                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-                $display("expected output: alu_out=%b, zero=%d", opcode_other_golden, zero_golden);
+                error;//call task 
             end
             else pass_cnt = pass_cnt + 1;
             end
@@ -224,10 +197,7 @@ begin
             @(posedge clk)begin
             #(cycle/4)
             if (alu_out !== opcode_other_golden | zero_golden !== zero) begin
-                err_cnt = err_cnt + 1;
-                $display("err_cnt:%d",err_cnt);
-                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-                $display("expected output: alu_out=%b, zero=%d", opcode_other_golden, zero_golden);
+                error;//call task 
             end
             else pass_cnt = pass_cnt + 1;
             end
@@ -241,7 +211,7 @@ begin
             @(posedge clk)begin
             #(cycle/4)
             if (alu_out !== opcode_other_golden | zero_golden !== zero) begin
-                error;
+                error;//call task 
             end
             else pass_cnt = pass_cnt + 1;
             end
@@ -255,11 +225,7 @@ begin
             @(posedge clk)begin
             #1
             if (zero_golden !== zero) begin
-                err_cnt = err_cnt + 1;
-                $display("zero check function!");
-                $display("err_cnt:%d",err_cnt);
-                $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
-                $display("expected output: zero=%d", zero_golden);
+                zero_error;  //call task              
             end
             else pass_cnt = pass_cnt + 1;
             end
@@ -292,6 +258,16 @@ begin
     $display("err_cnt:%d",err_cnt);
     $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
     $display("expected output: alu_out=%b, zero=%d", opcode_other_golden, zero_golden);
+end
+endtask
+
+task zero_error;
+begin
+    err_cnt = err_cnt + 1;
+    $display("zero check function!");
+    $display("err_cnt:%d",err_cnt);
+    $display("error at opcode=%b,accum=%b, data=%b", opcode, accum, data);
+    $display("expected output: zero=%d", zero_golden);
 end
 endtask
 
