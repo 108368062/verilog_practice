@@ -58,6 +58,15 @@ begin
     reset = 1;
     err_cnt = 0;
     pass_cnt = 0;
+    //---for reset function check on wave---(start)
+    for (i=0;i<8;i=i+1)
+    begin
+        @(negedge clk)begin
+            opcode=i;
+            accum = $random%256; data = $random%256;
+        end
+    end
+    //---for reset function check on wave---(end)
     i=0;
     #40
     reset = 0;
