@@ -3,7 +3,7 @@ source=alu.v
 output=alu_wave
 open=1
 all:
-	iverilog -o alu_wave.vvp $(test) $(source)
+	iverilog -o $(output).vvp $(test) $(source)
 	vvp $(output).vvp
 wave:
 	gtkwave $(output).vcd
