@@ -94,7 +94,7 @@ initial begin
 //$fsdbDumpfile("FIR.fsdb");
 //$fsdbDumpvars;
 $dumpfile("FIR_wave.vcd");
-$dumpvars(0,**);
+$dumpvars;
 end
 
 

@@ -11,3 +11,5 @@ wave:
 clean:
 	del *.vcd
 	del *.vvp
+help:
+	echo "all, all_mem, wave & clean"
