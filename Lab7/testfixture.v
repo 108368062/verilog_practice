@@ -43,9 +43,11 @@ initial	$readmemh (`EXP, exp_mem);
 always begin #(`CYCLE/2) clk = ~clk; end
 
 initial begin
-	$fsdbDumpfile("LBP.fsdb");
-	$fsdbDumpMDA;
-	$fsdbDumpvars;
+	//$fsdbDumpfile("LBP.fsdb");
+	//$fsdbDumpMDA;
+	//$fsdbDumpvars;
+	$dumpfile("LBP_wave.vcd");
+    $dumpvars;
 end
 
 

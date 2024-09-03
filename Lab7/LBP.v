@@ -9,6 +9,7 @@ output  	lbp_write;
 output  [7:0] 	lbp_data;
 output  	finish;
 
+assign finish=1;
 
 
 
