@@ -1,0 +1,49 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Thu Sep 05 16:27:26 2024
+[*]
+[dumpfile] "C:\Users\125wi\OneDrive\орн▒\verilog_place\verilog_practice\Lab7\LBP_wave.vcd"
+[dumpfile_mtime] "Thu Sep 05 16:27:04 2024"
+[dumpfile_size] 52344
+[savefile] "C:\Users\125wi\OneDrive\орн▒\verilog_place\verilog_practice\Lab7\temp.gtkw"
+[timestart] 327700
+[size] 1000 600
+[pos] -1 -1
+*-15.723383 45000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testfixture.
+[sst_width] 197
+[signals_width] 178
+[sst_expanded] 1
+[sst_vpaned_height] 153
+@28
+testfixture.LBP.clk
+testfixture.LBP.reset
+testfixture.LBP.cur_st[2:0]
+@22
+testfixture.LBP.r_cnt[3:0]
+testfixture.LBP.p_cnt[5:0]
+@28
+testfixture.LBP.finish
+testfixture.LBP.gray_req
+@24
+testfixture.gray_addr[5:0]
+@22
+testfixture.LBP.gray_data[7:0]
+testfixture.LBP.lbp_addr[5:0]
+@28
+testfixture.LBP.lbp_write
+@25
+testfixture.LBP.lbp_data[7:0]
+@22
+testfixture.LBP.result[7:0]
+testfixture.LBP.debug_mem0[7:0]
+testfixture.LBP.debug_mem1[7:0]
+testfixture.LBP.debug_mem2[7:0]
+testfixture.LBP.debug_mem3[7:0]
+testfixture.LBP.debug_mem4[7:0]
+testfixture.LBP.debug_mem5[7:0]
+testfixture.LBP.debug_mem6[7:0]
+testfixture.LBP.debug_mem7[7:0]
+testfixture.LBP.debug_mem8[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
