@@ -49,8 +49,10 @@ always@(*) begin
        finish = 1'b0;
        gray_req = 1'b1;
 	   gray_addr = pixel_addr;
+      lbp_addr = 6'd0;
       lbp_write = 1'b0;
       lbp_data = 8'h00;
+      result = 8'h00;
     end
    READ: begin
        finish = 1'b0;
@@ -65,6 +67,7 @@ always@(*) begin
 	    gray_addr = 6'd0;
       lbp_write = 1'b0;
       lbp_data = 8'h00;
+      //lbp process
       result = 1*(mem[0]>=mem[4])+2*(mem[1]>=mem[4])+4*(mem[2]>=mem[4])+
                8*(mem[3]>=mem[4])+16*(mem[5]>=mem[4])+
                32*(mem[6]>=mem[4])+64*(mem[7]>=mem[4])+128*(mem[8]>=mem[4]);
@@ -99,7 +102,7 @@ always@(*) begin
     CALC:
             next_st = WRITE;
     WRITE: begin
-        if(p_cnt <6'd36)
+        if(p_cnt <6'd35)//when 34 need to go next roud finish last pixel
             next_st = STR;
         else
             next_st = OUT;
@@ -132,7 +135,7 @@ end
 always@(posedge clk or posedge reset) begin
     if (reset)
        p_cnt_pre <= 6'd0;
-    else if(r_cnt == 8'd8 && cur_st == CALC)
+    else if(r_cnt == 8'd8 && cur_st == CALC && p_cnt <6'd35)
        p_cnt_pre <= p_cnt_pre + 6'd1;
     else 
        p_cnt_pre <= p_cnt_pre;
