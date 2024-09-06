@@ -44,7 +44,16 @@ always@(posedge clk or posedge reset) begin
 end
 
 always@(*) begin
-    case(cur_st)  
+    case(cur_st)
+    IDLE: begin
+       finish = 1'b1;
+       gray_req = 1'b0;
+	   gray_addr = 6'd0;
+      lbp_addr = 6'd0;
+      lbp_write = 1'b0;
+      lbp_data = 8'h00;
+      result = 8'h00;
+    end 
     STR: begin
        finish = 1'b0;
        gray_req = 1'b1;
@@ -106,7 +115,9 @@ always@(*) begin
             next_st = STR;
         else
             next_st = OUT;
-    end    
+    end       
+    OUT: 
+         next_st = IDLE;           
     default:
        next_st = STR;
     endcase
